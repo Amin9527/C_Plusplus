@@ -1,0 +1,37 @@
+﻿生成启动时间为 2018/7/23 13:19:24。
+     1>项目“E:\比特作业\C++\类模板实现--顺序表\类模板实现--顺序表\类模板实现--顺序表.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\比特人\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Test.cpp
+         Test.cpp
+     1>e:\比特作业\c++\类模板实现--顺序表\类模板实现--顺序表\seqlist.h(40): warning C4018: “<”: 有符号/无符号不匹配
+                 e:\比特作业\c++\类模板实现--顺序表\类模板实现--顺序表\seqlist.h(36): 编译类 模板 成员函数“SeqList<int>::SeqList(T *,size_t)”时
+                 with
+                 [
+                     T=int
+                 ]
+                 e:\比特作业\c++\类模板实现--顺序表\类模板实现--顺序表\test.cpp(9): 参见对正在编译的函数 模板 实例化“SeqList<int>::SeqList(T *,size_t)”的引用
+                 with
+                 [
+                     T=int
+                 ]
+                 e:\比特作业\c++\类模板实现--顺序表\类模板实现--顺序表\test.cpp(9): 参见对正在编译的类 模板 实例化“SeqList<int>”的引用
+     1>e:\比特作业\c++\类模板实现--顺序表\类模板实现--顺序表\seqlist.h(80): warning C4018: “<”: 有符号/无符号不匹配
+                 e:\比特作业\c++\类模板实现--顺序表\类模板实现--顺序表\seqlist.h(77): 编译类 模板 成员函数“void SeqList<int>::pop(T)”时
+                 with
+                 [
+                     T=int
+                 ]
+                 e:\比特作业\c++\类模板实现--顺序表\类模板实现--顺序表\test.cpp(11): 参见对正在编译的函数 模板 实例化“void SeqList<int>::pop(T)”的引用
+                 with
+                 [
+                     T=int
+                 ]
+     1>e:\比特作业\c++\类模板实现--顺序表\类模板实现--顺序表\seqlist.h(84): warning C4018: “<”: 有符号/无符号不匹配
+       Link:
+         E:\比特人\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\比特作业\C++\类模板实现--顺序表\Debug\类模板实现--顺序表.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\比特作业\C++\类模板实现--顺序表\Debug\类模板实现--顺序表.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\比特作业\C++\类模板实现--顺序表\Debug\类模板实现--顺序表.lib" /MACHINE:X86 Debug\Test.obj
+         类模板实现--顺序表.vcxproj -> E:\比特作业\C++\类模板实现--顺序表\Debug\类模板实现--顺序表.exe
+     1>已完成生成项目“E:\比特作业\C++\类模板实现--顺序表\类模板实现--顺序表\类模板实现--顺序表.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.17
