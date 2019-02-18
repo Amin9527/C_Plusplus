@@ -5,9 +5,15 @@
 void* ThreadCache::FetchFromCentralCache(size_t index, size_t bytes)
 {
 	FreeList* freelist = &_freelist[index];
-	size_t num_to_move = min(ClassSize::NumMoveSize(bytes), freelist->MaxSize());
+	size_t num_to_move = min(ClassSize::NumMoveSize(bytes), freelist->MaxSize());//num_to_move是想要申请对象的个数
 	void *start, *end;
-	size_t fetchnum = CentralCache::GetInstance()->FetchRangeObj(start, end, num_to_move, bytes);
+	size_t fetchnum = CentralCache::GetInstance()->FetchRangeObj(start, end, num_to_move, bytes);//fetch是实际申请的对象个数
+	if (fetchnum > 1)
+	{
+		freelist->PushRange(NEXT_OBJ(start), end, fetchnum - 1);
+	}
+
+	return start;
 }
 
 
@@ -20,7 +26,7 @@ void* ThreadCache::Allocate(size_t size)
 	//计算取整后内存块对应freelist链表中的位置
 	size_t index = ClassSize::Index(size);
 	FreeList* freelist = &_freelist[index];
-	if (!freelist->Empty)
+	if (!freelist->Empty())
 	{
 		return freelist->Pop();//取出相应位置内存块并返回
 	}

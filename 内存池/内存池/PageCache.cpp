@@ -1,5 +1,7 @@
 #include"PageCache.h"
 
+PageCache PageCache::_inst;
+
 //申请一个pagespan中的span
 Span* PageCache::NewSpan(size_t npage)
 {
@@ -24,7 +26,7 @@ Span* PageCache::NewSpan(size_t npage)
 	}
 
 	//需要向系统申请内存
-	void* ptr = VirtualAlloc(NULL, (NPAGES - 1 << PAGE_SHIFT), MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
+	void* ptr = VirtualAlloc(NULL, (NPAGES << PAGE_SHIFT), MEM_RESERVE | MEM_COMMIT, PAGE_READWRITE);
 	if (ptr == nullptr)
 	{
 		throw std::bad_alloc();

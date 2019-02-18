@@ -1,7 +1,10 @@
 #include"CentralCache.h"
 #include"PageCache.h"
+
+CentralCache CentralCache::_inst;
+
 //获取一个span
-Span* GetOneSpan(SpanList* spanlist, size_t bytes)
+Span* CentralCache::GetOneSpan(SpanList* spanlist, size_t bytes)
 {
 	Span* span = spanlist->begin();//获取带头双向循环链表头结点的下一个节点
 	while (span != spanlist->end())//循环找一个有对象的span
@@ -38,11 +41,28 @@ Span* GetOneSpan(SpanList* spanlist, size_t bytes)
 }
 
 //从中心获取一定数量的对象给threadcache
-size_t CentralCache::FetchRangeObj(void*& start, void*& end, size_t n, size_t bytes)
+size_t CentralCache::FetchRangeObj(void*& start, void*& end, size_t num, size_t bytes)
 {
 	size_t index = ClassSize::Index(bytes);//找到该大小内存对应自由链表的位置标识
 	SpanList* spanlist = &_spanlist[index];//找到该大小内存对应自由链表的位置
 
 	//获取一个span
 	Span* span = GetOneSpan(spanlist, bytes);
+	void* cur = span->_objlist;
+	void* prev = cur;
+	size_t fetchnum = 0;
+	while (cur != nullptr && fetchnum < num)//在对应的span悬挂对象链表中取num个对象，
+	{                                       //如果不够num个对象，则全部取出
+		prev = cur;
+		cur = NEXT_OBJ(cur);
+		++fetchnum;
+	}
+
+	NEXT_OBJ(prev) = nullptr;//将取出的最后一个对象的next制空
+	start = span->_objlist;
+	end = prev;
+	span->_objlist = cur;//span的_objlist指向剩余对象
+	span->_usecount += fetchnum;//使用计数增加
+	
+	return fetchnum;
 }

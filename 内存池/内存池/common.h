@@ -1,5 +1,6 @@
 #pragma once
 #include<iostream>
+#include<windows.h>
 #include<assert.h>
 
 #ifdef _WIN32
@@ -23,6 +24,14 @@ static inline void*& NEXT_OBJ(void *obj)
 class FreeList
 {
 public:
+
+	void PushRange(void* start, void* end, size_t num)
+	{
+		NEXT_OBJ(end) = _list;
+		_list = start;
+		_size += num;
+	}
+
 	bool Empty()
 	{
 		return _list == nullptr;
@@ -100,12 +109,12 @@ public:
 
 	Span* end()
 	{
-		return _head->_prev;
+		return _head;
 	}
 
 	bool Empty()
 	{
-		return _head = _head->_next;
+		return _head == _head->_next;
 	}
 
 	void Insert(Span* cur, Span* newspan)
@@ -192,7 +201,8 @@ public:
 
 	static inline size_t _Index(size_t bytes, size_t align_shift)
 	{
-		return bytes >> align_shift-1;
+		//return ((bytes + (1 << align_shift) - 1) >> align_shift) - 1;
+		return (bytes >> align_shift)-1;
 	}
 
 	static inline size_t Index(size_t bytes)
