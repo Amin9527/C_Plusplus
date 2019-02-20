@@ -1,5 +1,6 @@
 //#define _CRT_SECURE_NO_WARNINGS 1
-
+#include<map>
+#include<vector>
 #include<string>
 #include<iostream>
 #include<stdlib.h>
@@ -7,7 +8,25 @@
 #include<fstream>
 using namespace std;
 
-//////////////////////////////////////////////////
+//---------------map、nultimap、set、nultiset---
+void MapTest()
+{
+	map<int, char> m{ { 1, 'a' }};
+	cout << m[1] << endl;
+	cout << m.size() << endl;
+	m.insert({ 2, 'a' });
+	cout << m[2] << endl;
+	cout << m.size() << endl;
+}
+
+int main()
+{
+	MapTest();
+	system("pause");
+	return 0;
+}
+
+///////数组、指针在内存中的情况------------
 /*
 int main()
 {
