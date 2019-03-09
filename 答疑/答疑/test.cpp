@@ -8,52 +8,320 @@
 #include<fstream>
 using namespace std;
 
-//---------------map、nultimap、set、nultiset---
-void MapTest()
-{
-	map<int, char> m{ { 1, 'a' }};
-	cout << m[1] << endl;
-	cout << m.size() << endl;
-	m.insert({ 2, 'a' });
-	cout << m[2] << endl;
-	cout << m.size() << endl;
-}
-
 int main()
 {
-	MapTest();
+	int s;
+	cin >> s;
+	int arr[] = {1,1,-1,1,-1};
+	int max = 0;
+	int count = 0;
+	for (int i = 1; i < s; i+=2)
+	{
+		if (arr[i - 1] + arr[i] == 0)
+		{
+			count += 2;
+		}
+		else
+		{
+			max = max>count ? max : count;
+			count = 0;
+			i--;
+		}
+	}
+	if (count == 0)
+		cout << max << endl;
+	else
+		cout << count << endl;
 	system("pause");
 	return 0;
 }
 
-///////数组、指针在内存中的情况------------
 /*
 int main()
 {
-	char arr1[] = "abc";//arr1、arr2都在栈上，各自保存着各自的“abc”
-	char arr2[] = "abc";
-	char *p1 = "abc"; //p1、p2为栈上的两个变量，p1、p2指向堆上相同的一块地址
-	char *p2 = "abc";
+	int x, y, m;
+	cin >> x >> y >> m;
+	int max = 0;
+	int count = 0;
+	while ((x < m) && (y < m))
+	{
+		max = x > y ? x : y;
+
+		
+		if (x >= y)
+		{
+			max = x;
+			x = x + y;
+			y = max;
+			count++;
+		}
+		else
+		{
+			max = y;
+			y = x + y;
+			x = max;
+			count++;
+		}
+	
+	}
+	cout << count << endl;
+	system("pause");
 	return 0;
 }
 */
-/////////////////////////////////////////////////
 /*
-#include<stdio.h>
-void fun()
+int GetMax(int a, int b, int c, int d, int e)
 {
-	int b = 10;
-	*(((int*)*(&b + 2)) - 2) = 20;
+	int max = 0;
+	max = a > b ? a : b;
+	max = max > c ? max : c;
+	max = max > d ? max : d;
+	max = max > e ? max : e;
+	return max;
+}
+
+int T(char a, char b, char c, char d, char e, int &index)
+{
+	int a1, b1, c1, d1, e1;
+
+	if (a == 'T' || a == 'J' || a == 'Q' || a == 'K')
+		a1 = 10;
+	else if (a == 'A')
+		a1 = 11;
+	else
+		a1 = a - '0';
+
+	if (b == 'T' || b == 'J' || b == 'Q' || b == 'K')
+		b1 = 10;
+	else if (b == 'A')
+		b1 = 11;
+	else
+		b1 = b - '0';
+
+	if (c == 'T' || c == 'J' || c == 'Q' || c == 'K')
+		c1 = 10;
+	else if (c == 'A')
+		c1 = 11;
+	else
+		c1 = c - '0';
+
+	if (d == 'T' || d == 'J' || d == 'Q' || d == 'K')
+		d1 = 10;
+	else if (d == 'A')
+		d1 = 11;
+	else
+		d1 = d - '0';
+
+	if (e == 'T' || e == 'J' || e == 'Q' || e == 'K')
+		e1 = 10;
+	else if (e == 'A')
+		e1 = 11;
+	else
+		e1 = e - '0';
+
+	if ((a1 + b1 + c1) / 10 != 0 && (a1 + b1 + c1) % 10 == 0)
+	{
+		index = 1;
+		return (d1 + e1) % 10;
+	}
+	int max = GetMax(a1, b1, c1, d1, e1);
+	return max;
+}
+
+int Test(string &s, int &index)
+{
+	int a1 = 0;
+	int a = T(s[0], s[1], s[2], s[3], s[4], a1);
+	int b1 = 0;
+	int b = T(s[0], s[1], s[3], s[2], s[4], b1); 
+	int c1 = 0;
+	int c = T(s[0], s[1], s[4], s[3], s[2], c1);
+	int d1 = 0;
+	int d = T(s[0], s[3], s[2], s[1], s[4], d1);
+	int e1 = 0;
+	int e = T(s[0], s[4], s[2], s[3], s[1], e1);
+	int f1 = 0;
+	int f = T(s[0], s[4], s[3], s[0], s[1], e1);
+	int g1 = 0;
+	int g = T(s[1], s[4], s[2], s[3], s[0], e1);
+	int h1 = 0;
+	int h = T(s[1], s[2], s[3], s[0], s[4], e1);
+	int i1 = 0;
+	int i = T(s[1], s[3], s[4], s[0], s[2], e1);
+	int j1 = 0;
+	int j = T(s[2], s[3], s[4], s[0], s[1], e1);
+
+	int max = 0;
+	if (a1 == 1 || b1 == 1 || c1 == 1 || d1 == 1 || e1 == 1 || f1 == 1 || g1 == 1 || h1 == 1 || i1 == 1 || j1 == 1)
+	{
+		index = 1;
+		if (a1 == 1)
+			max = a;
+		if (b1 == 1)
+			max = max > b ? max : b;
+		if (c1 == 1)
+			max = max > c ? max : c;
+		if (d1 == 1)
+			max = max > d ? max : d;
+		if (e1 == 1)
+			max = max > e ? max : e;
+		if (f1 == 1)
+			max = max > f ? max : f;
+		if (g1 == 1)
+			max = max > g ? max : g;
+		if (h1 == 1)
+			max = max > h ? max : h;
+		if (i1 == 1)
+			max = max > i ? max : i;
+		if (j1 == 1)
+			max = max > j ? max : j;
+	}
+	else
+	{
+		max = a > b ? a : b;
+		max = max > c ? max : c;
+		max = max > d ? max : d;
+		max = max > e ? max : e;
+		max = max > f ? max : f;
+		max = max > g ? max : g;
+		max = max > h ? max : h;
+		max = max > i ? max : i;
+		max = max > j ? max : j;
+	}
+	return max;
 }
 
 int main()
 {
-	int a = 0;
-	fun();
-	printf("%d\n", a);
+	string s1, s2;
+	cin >> s1;
+	cin >> s2;
+	int index_s1 = 0;
+	int index_s2 = 0;
+	int m1 = Test(s1, index_s1);
+	int m2 = Test(s2, index_s2);
+	if (index_s1 > index_s2)
+		cout << 1;
+	else if (index_s1 == index_s2)
+	{
+		if (m1 > m2)
+			cout << 1;
+		else if (m1 == m2)
+			cout << 0;
+		else
+			cout << -1;
+	}
+	else
+		cout << -1;
+	system("pause");
+	return 0;
+}
+
+*/
+
+//#define SUM 5
+//
+//void GetArr(int *&arr1, int *&arr2)
+//{
+//	arr1 = new int[SUM];
+//	arr2 = new int[SUM];
+//	for (int i = 0; i < SUM; ++i)
+//	{
+//		cin >> arr1[i];
+//	}
+//	for (int i = 0; i < SUM; ++i)
+//	{
+//		cin >> arr2[i];
+//	}
+//}
+//
+//int main()
+//{
+//	int *arr1, *arr2;
+//	GetArr(arr1, arr2);
+//	int k = 0;
+//	for (int i = 0; i < SUM; ++i)
+//	{
+//		for (int j = k; j < SUM; ++j)
+//		{
+//			if (arr1[i] == arr2[j])
+//			{
+//				k = j;
+//				cout << arr1[i] << " ";
+//			}
+//		}
+//	}
+//	system("pause");
+//	return 0;
+//}
+
+/*
+class Test
+{
+public:
+	Test(){}
+	//Test(int x = 0, int y = 1):a(x),b(y){}
+	//Test(int x, int y) :a(x), b(y){}
+	Test(int x){}
+	Test(int x , int y = 0) :a(x), b(y){}
+private:
+	int a;
+	int b;
+};
+
+int main()
+{
+	Test t;
 	return 0;
 }
 */
+////---------------map、nultimap、set、nultiset---
+///*
+//void MapTest()
+//{
+//	map<int, char> m{ { 1, 'a' }};
+//	cout << m[1] << endl;
+//	cout << m.size() << endl;
+//	m.insert({ 2, 'a' });
+//	cout << m[2] << endl;
+//	cout << m.size() << endl;
+//}
+//
+//int main()
+//{
+//	MapTest();
+//	system("pause");
+//	return 0;
+//}
+//*/
+/////////数组、指针在内存中的情况------------
+///*
+//int main()
+//{
+//	char arr1[] = "abc";//arr1、arr2都在栈上，各自保存着各自的“abc”
+//	char arr2[] = "abc";
+//	char *p1 = "abc"; //p1、p2为栈上的两个变量，p1、p2指向堆上相同的一块地址
+//	char *p2 = "abc";
+//	return 0;
+//}
+//*/
+///////////////////////////////////////////////////
+///*
+//#include<stdio.h>
+//void fun()
+//{
+//	int b = 10;
+//	*(((int*)*(&b + 2)) - 2) = 20;
+//}
+//
+//int main()
+//{
+//	int a = 0;
+//	fun();
+//	printf("%d\n", a);
+//	return 0;
+//}
+//*/
 //-------------------------auto迭代器的糖果询问
 //void test1()
 //{
@@ -401,3 +669,47 @@ int main()
 //	system("pause");
 //	return 0;
 //}
+
+
+//-----------------找字符串中最长数字串---
+/*
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+int main()
+{
+	int len = 0;
+	char *start = nullptr, *end = nullptr;
+	char *str = new char[256];
+	cin >> str;
+	cout << str;
+	//auto it = str.begin();
+	char *it = nullptr;
+	char *ptr = nullptr;
+	int index = 0;
+	for (it = str; *it != '\0'; ++it)
+	{
+
+		if ('9' - (*it) <= 9 && '9' - (*it) >= 0 && index == 0)
+		{
+			ptr = it;
+			index = 1;
+		}
+		if ('9' - (*it) > 9 || '9' - (*it) < 0 && index == 1)
+		{
+			if ((it - ptr) > len)
+			{
+				start = ptr;
+				end = it;
+				len = it - ptr;
+				index = 0;
+			}
+		}
+	}
+	string s(start, end);
+	cout << s;
+	return 0;
+}
+*/
