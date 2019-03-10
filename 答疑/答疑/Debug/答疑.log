@@ -1,13 +1,16 @@
-﻿生成启动时间为 2019/3/9 22:43:37。
+﻿生成启动时间为 2019/3/10 21:24:22。
      1>项目“E:\作业\C++\答疑\答疑\答疑.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          E:\比特人\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt test.cpp
          test.cpp
-       Link:
-         E:\比特人\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\作业\C++\答疑\Debug\答疑.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\作业\C++\答疑\Debug\答疑.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\作业\C++\答疑\Debug\答疑.lib" /MACHINE:X86 Debug\test.obj
-         答疑.vcxproj -> E:\作业\C++\答疑\Debug\答疑.exe
-     1>已完成生成项目“E:\作业\C++\答疑\答疑\答疑.vcxproj”(Build 个目标)的操作。
+     1>e:\作业\c++\答疑\答疑\test.cpp(14): error C2352: “Test::fun2”: 非静态成员函数的非法调用
+                 e:\作业\c++\答疑\答疑\test.cpp(16) : 参见“Test::fun2”的声明
+     1>e:\作业\c++\答疑\答疑\test.cpp(14): error C2143: 语法错误 : 缺少“;”(在“}”的前面)
+     1>e:\作业\c++\答疑\答疑\test.cpp(28): error C2352: “Test::fun2”: 非静态成员函数的非法调用
+                 e:\作业\c++\答疑\答疑\test.cpp(16) : 参见“Test::fun2”的声明
+     1>e:\作业\c++\答疑\答疑\test.cpp(30): error C2597: 对非静态成员“Test::b”的非法引用
+     1>已完成生成项目“E:\作业\C++\答疑\答疑\答疑.vcxproj”(Build 个目标)的操作 - 失败。
 
-生成成功。
+生成失败。
 
-已用时间 00:00:01.06
+已用时间 00:00:00.58

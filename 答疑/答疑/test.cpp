@@ -8,6 +8,76 @@
 #include<fstream>
 using namespace std;
 
+class Test
+{
+public:
+	static void fun(){ fun2() } //error
+	void fun1(){ fun(); }
+	void fun2(){}
+private:
+public:
+	static int a;
+	int b;
+};
+
+int main()
+{
+	Test t;
+	t.fun();
+	Test::fun();
+	Test::fun2(); //error
+	Test::a;
+	Test::b; //error
+	t.b;
+	t.a;
+	return 0;
+}
+
+//--------------------------------------------
+//将B字符串插入到A字符串中的任意位置，使之构成回文字符串，计算插入方法
+/*
+int main()
+{
+	string s1, s2;
+	cin >> s1 >> s2;
+	int sum = 0;
+	for (int i = 0; i < (s1.size() + 1); ++i)
+	{
+		string s3;
+		if (i == 0) //在s1的头部插入
+		{
+			s3 = s2 + s1;
+		}
+		else if (i == s1.size()) //在s1的尾部插入
+		{
+			s3 = s1 + s2;
+		}
+		else  //在s1的中间插入
+		{
+			s3 = s1.substr(0, i) + s2 + s1.substr(i);
+		}
+		int start = 0, end = s3.size() - 1;
+		while (start < end)  //检测s3是不是回文
+		{
+			if (s3[start] == s3[end])
+			{
+				start++;
+				end--;
+			}
+			else
+				break;
+		}
+		if (start >= end)
+			sum++;
+	}
+	cout << sum << endl;
+	return 0;
+}
+*/
+
+//-------------------------------------
+//计算数组中最长的相邻两数和是0的长度
+/*
 int main()
 {
 	int s;
@@ -35,6 +105,11 @@ int main()
 	system("pause");
 	return 0;
 }
+*/
+
+//---------------------------
+//计算最少的合成很赞数的次数
+//1、2  5（两次）--2、3--3、5--
 
 /*
 int main()
@@ -69,6 +144,21 @@ int main()
 	return 0;
 }
 */
+
+//-----------------------------------------------------------------
+//“斗牛”是一种热门的扑克游戏，每个人5张牌，其中A当1，JQK都当10。要求：从5张牌中选出3张牌（必须刚好3张），如果存在3张牌加起来是10或者20或者30，就称为“有牛”，否则就是“没牛”。
+//有牛的情况下，剩余两张牌加起来除以10后：
+//? 余数为0就是“牛牛”，是最大的一手牌。
+//? 如果余数为9就是“牛九”，是第二大的，依次类推，“牛一”就是最小。
+//? “有牛”都大于“没牛”。
+//? 两人都是没牛的情况下，比最大的一张牌谁大（注意A最大，2最小），最大一张牌一样则比较第二张牌，依次类推。
+//请写一段代码，验证两手牌哪一个最大。
+//输入是长度为5的两个字符串，表示两手牌。字符串内容是23456789TJQKA，注意为了让字符串长度一致，我们用T代表10。
+//请输出一个值：1表示第一手牌大， - 1表示后一手牌更大，0表示一样大。
+//示例：
+//输入 "4579K", "AAAA2", 输出：1
+//因为4 + 7 + 9 = 20（有牛），剩下两张牌5 + K是牛五，后一手牌没牛，所以前者更大。
+
 /*
 int GetMax(int a, int b, int c, int d, int e)
 {
@@ -201,24 +291,33 @@ int main()
 	int m1 = Test(s1, index_s1);
 	int m2 = Test(s2, index_s2);
 	if (index_s1 > index_s2)
-		cout << 1;
-	else if (index_s1 == index_s2)
+		cout << "前者大，前面有牛、后面无牛" << endl;
+	else if (index_s1 == index_s2 && index_s1 == 0)
 	{
 		if (m1 > m2)
-			cout << 1;
+			cout << "前者大，都无牛" << endl;
 		else if (m1 == m2)
-			cout << 0;
+			cout << "一样大，都无牛" << endl;
 		else
-			cout << -1;
+			cout << "后者大，都无牛"<<endl;
+	}
+	else if (index_s1 == index_s2 && index_s1 == 1)
+	{
+		if (m1 > m2)
+			cout << "前者大，都有牛" << endl;
+		else if (m1 == m2)
+			cout << "一样大，都有牛" << endl;
+		else
+			cout << "后者大，都有牛" << endl;
 	}
 	else
-		cout << -1;
+		cout << "后者大,前者无牛、后者有牛" << endl;
 	system("pause");
 	return 0;
 }
-
 */
 
+//-----------------------------------------------------------------------
 //#define SUM 5
 //
 //void GetArr(int *&arr1, int *&arr2)
