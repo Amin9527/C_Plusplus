@@ -6,8 +6,97 @@
 #include<stdlib.h>
 #include<string.h>
 #include<fstream>
+
+#include"zm.h"
+
 using namespace std;
 
+//----------不创建变量，交换两个数----
+/*
+int main()
+{
+	int a = 1, b = 2;
+	cout << " " << a << " " << b << endl;
+	//缺陷：a = a + b；时，可能会超出表示范围
+	a = a + b;
+	b = a - b;
+	a = a - b;
+	cout << " " << a << " " << b << endl;
+
+	//异或
+	a = a ^ b;
+	b = a ^ b;
+	a = a ^ b;
+	cout << " " << a << " " << b << endl;
+	system("pause");
+	return 0;
+}
+*/
+//-----------------------------
+/*
+int main()
+{
+	cout << 1 / 2 << endl;  //0
+	cout << 1 % 2 << endl;  //1
+	cout << -1 / 2 << endl; //0
+	cout << -1 % 2 << endl; //-1
+	cout << -3 / 2 << endl; //-1
+	cout << -3 % 2 << endl; //-1
+	system("pause");
+	return 0;
+}
+*/
+//------------冒泡排序------
+/*
+void fun(int arr[10])
+{
+	int i = 0, j = 0;
+	for (i = 0; i < 10; ++i)
+	{
+		for (j = 1; j < 10 - i; ++j)
+		{
+			int s = 0;
+			if (arr[j] < arr[j-1])
+			{
+				s = arr[j];
+				arr[j] = arr[j-1];
+				arr[j-1] = s;
+			}
+		}
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+}
+
+int main()
+{
+	int arr[10] = { 3, 6, 2, 1, 5, 7, 4, 9, 0, 8 };
+	fun(arr);
+	system("pause");
+	return 0;
+}
+*/
+
+
+
+
+/*
+int main()
+{
+	int *p = new int[5]();
+	cout << p[0] << endl;
+	cout << p[1] << endl;
+	delete p;
+	cout << p[0] << endl;
+	cout << p[1] << endl;
+	system("pause");
+	return 0;
+}
+*/
+/*
 class Test
 {
 public:
@@ -32,7 +121,7 @@ int main()
 	t.a;
 	return 0;
 }
-
+*/
 //--------------------------------------------
 //将B字符串插入到A字符串中的任意位置，使之构成回文字符串，计算插入方法
 /*
