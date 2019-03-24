@@ -11,6 +11,124 @@
 
 using namespace std;
 
+int main()
+{
+
+	system("pause");
+	return 0;
+}
+
+//-------------------数组旋转---
+
+/*
+void shift(int *input, int len, int dist)
+{
+	int t = 0;
+	//int end = len - 1;
+	while (dist)
+	{
+		t = input[len - 1];
+		int end = len - 1;
+		while (end != 0)
+		{
+			input[end] = input[end - 1];
+			end--;
+		}
+		input[end] = t;
+		--dist;
+	}
+
+	for (int j = 0; j < 5; j++)
+	{
+		cout << input[j] << " ";
+	}
+}
+
+int main()
+{
+	int arr[] = { 1, 2, 3, 4, 5 };
+	shift(arr, 5, 6);
+	system("pause");
+	return 0;
+}
+*/
+/*
+
+//---------------------堆排序--heap--
+
+class Heap
+{
+public:
+	Heap(int *arr, int size) :_arr(arr), _size(size)
+	{
+		int child = _size - 1, parent = (child - 1) / 2;
+		while (parent >= 0)
+		{
+			AdjustDown(parent, _size);
+			--parent;
+		}
+	}
+
+	void swap(int *a, int *b)
+	{
+		int tmp = *a;
+		*a = *b;
+		*b = tmp;
+	}
+
+	void AdjustDown(int parent, int size)
+	{
+		int child = parent * 2 + 1;
+		while (child < size)
+		{
+			if ((child + 1) < size && _arr[child] < _arr[child + 1])
+				child = child + 1;
+			if (_arr[child] > _arr[parent])
+			{
+				swap(&_arr[child], &_arr[parent]);
+				parent = child;
+				child = parent * 2 + 1;
+			}
+			else
+			{
+				parent = child;
+				child = parent * 2 + 1;
+			}
+		}
+	}
+
+	void upsort()
+	{
+		int count = _size - 1;
+		int parent = 0;
+		while (count)
+		{
+			swap(&_arr[0], &_arr[count]);
+			AdjustDown(0, count);
+			--count;
+		}
+	}
+private:
+	int *_arr;
+	int _size;
+};
+
+int main()
+{
+	int arr[] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	int len = sizeof(arr) / sizeof(int);
+	Heap h(arr, len);
+	for (int i = 0; i < len; ++i)
+		cout << arr[i] << " ";
+	cout << endl;
+	h.upsort();
+	for (int i = 0; i < len; ++i)
+		cout << arr[i] << " ";
+	system("pause");
+	return 0;
+}
+
+*/
 //----------不创建变量，交换两个数----
 /*
 int main()
@@ -23,7 +141,7 @@ int main()
 	a = a - b;
 	cout << " " << a << " " << b << endl;
 
-	//异或
+	//异或：二进制位相同为0，不同为1
 	a = a ^ b;
 	b = a ^ b;
 	a = a ^ b;
