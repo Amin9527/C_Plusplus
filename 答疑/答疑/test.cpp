@@ -11,12 +11,58 @@
 
 using namespace std;
 
+//---------------逢七过(7的倍数，或者个位数为7)
+//七个人，每次都是自己开始喊数，第一次喊数的范围为1-6；
+/*
+typedef struct node
+{
+	int element;
+	int count;
+}node;
+
+void fun(int count, int &pn)
+{
+	if (count < 200)
+	{
+		if (count % 7 == 0 || count % 10 == 7)
+		{
+			pn++;
+			fun(count + 7, pn);
+		}
+		else
+			fun(count + 7, pn);
+	}
+}
+
+node func(int pn)
+{
+	node n;
+	int min = 200;
+	for (int i = 1; i<7; ++i)
+	{
+		int count = 0;
+		fun(i, count);
+		cout << i << "->" << count << endl;
+		if (count < min)
+		{
+			min = count;
+			n.count = min;
+			n.element = i;
+		}
+		//min = min < count ? min : count;
+	}
+	return n;
+}
+
 int main()
 {
-
+	node less = func(7);
+	cout << "element: " << less.element << endl;
+	cout << "count: " << less.count << endl;
 	system("pause");
 	return 0;
 }
+*/
 
 //-------------------数组旋转---
 
