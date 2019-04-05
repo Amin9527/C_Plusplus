@@ -7,9 +7,182 @@
 #include<string.h>
 #include<fstream>
 
-#include"zm.h"
+#include<algorithm> //算法
+//#include<limits.h> //最大、最小值 #define INT_MAX 0x7fffffff  #define INT_MIN 0x80000000
 
 using namespace std;
+
+
+
+
+
+//------------------------------------------------------------------------------
+//
+//class a
+//{
+//public:
+//	virtual void fun()
+//	{
+//		cout << "a : fun()" << endl;
+//	}
+//};
+//class b
+//{
+//public:
+//	virtual void fun()
+//	{
+//		cout << "b : fun()" << endl;
+//	}
+//};
+//
+//class c:public a,public b
+//{
+//	
+//};
+//
+//int main()
+//{
+//	c c;
+//	//c.fun();  //编译时错误、不明确调用的a的还是b的
+//	system("pause");
+//	return 0;
+//}
+
+
+//----------------------------------------
+//输入包含多组测试数据。
+//
+//对于每组测试数据：
+//
+//N - 本组测试数据有n个数
+//
+//a1, a2...an - 需要计算的数据
+//
+//保证 :
+//
+//1 <= N <= 100000, 0 <= ai <= INT_MAX.
+//
+//
+//
+//
+//输出描述 :
+//
+//	 对于每组数据，输出两个数，第一个数表示差最小的对数，第二个数表示差最大的对数。
+//
+//	 示例1
+//	 输入
+//	 6
+//	 45 12 45 32 5 6
+//	 输出
+//	 1 2
+/*
+int arr[100000] = { 0 };
+
+int main()
+{
+	int N;
+	while (cin>>N)
+	{
+		int Min = INT_MAX;
+		int Max = INT_MIN;
+		int min_count = 0;
+		int max_count = 0;
+		for (int i = 0; i < N; ++i)
+			cin >> arr[i];
+		for (int i = 0; i < N - 1; ++i)
+		{
+			for (int j = i + 1; j < N; ++j)
+			{
+				if (abs(arr[i] - arr[j]) < Min)
+				{
+					min_count = 0;
+					Min = abs(arr[i] - arr[j]);
+					min_count++;
+				}
+				else if (abs(arr[i] - arr[j]) == Min)
+					min_count++;
+				if (abs(arr[i] - arr[j]) > Max)
+				{
+					max_count = 0;
+					Max = abs(arr[i] - arr[j]);
+					++max_count;
+				}
+				else if (abs(arr[i] - arr[j]) == Max)
+					++max_count;
+			}
+		}
+		cout << min_count << " " << max_count << endl;
+	}
+	return 0;
+}
+*/
+//-------------------------------------------------------
+/*
+int main()
+{
+	string s;
+	cin >> s;          //abcd
+	cout << s << endl;  //abcd
+	cin >> s;          //zm
+	cout << s << endl;  //zm
+	system("pause");
+	return 0;
+}
+*/
+//-----------------------------------------------------------------------------
+//[编程题] 算法基础 - 字符移位
+//时间限制：1秒
+//
+//空间限制：32768K
+//
+//小Q最近遇到了一个难题：把一个字符串的大写字母放到字符串的后面，各个字符的相对位置不变，且不能申请额外的空间。
+//你能帮帮小Q吗？
+//
+//
+//输入描述 :
+//
+//输入数据有多组，每组包含一个字符串s，且保证 : 1 <= s.length <= 1000.
+//
+//
+//
+//输出描述 :
+//
+//	 对于每组数据，输出移位后的字符串。
+//
+//
+// 输入例子1 :
+//						 AkleBiCeilD
+//
+//						 输出例子1 :
+//						 kleieilABCD
+//
+//int main()
+//{
+//	string s;
+//	while (cin >> s)
+//	{
+//		char ch;
+//		size_t j;
+//		int count = 0;
+//		for (int i = 0; i < s.size(); ++i)
+//		{
+//			if (s[i] >= 65 && s[i] <= 90)
+//			{
+//				if (i + count == s.size())
+//					break;
+//				++count;
+//				ch = s[i];
+//				for (j = i; j < (s.size() - 1); ++j)
+//					s[j] = s[j + 1];
+//				s[j] = ch;
+//				--i;
+//			}
+//		}
+//		cout << s << endl;
+//	}
+//	system("pause");
+//	return 0;
+//}
 
 //---------------逢七过(7的倍数，或者个位数为7)
 //七个人，每次都是自己开始喊数，第一次喊数的范围为1-6；
