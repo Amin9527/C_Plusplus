@@ -1,9 +1,10 @@
-//#define _CRT_SECURE_NO_WARNINGS 1
+#define _CRT_SECURE_NO_WARNINGS 1
 #include<map>
 #include<vector>
 #include<string>
 #include<iostream>
 #include<stdlib.h>
+#include<stdio.h>
 #include<string.h>
 #include<fstream>
 
@@ -12,6 +13,251 @@
 
 using namespace std;
 
+/******************************开始写代码******************************/
+int fun()
+{
+	int arr[10000] = { 0 };
+	int sum = 0;
+	cin >> sum;
+	int e = 0;
+	for (int i = 0; i < sum; ++i)
+	{
+		cin >> e;
+		arr[e]++;
+	}
+	int count = 0;
+	int index = 0;
+	int m = arr[1];
+	for (int i = 1; i < sum; ++i)
+	{
+		if (arr[i] % 2 == 1)
+		{
+			if (index != 0 && index != arr[i])
+				return 0;
+			else
+			{
+				m = min(arr[i], m);
+				index++;
+			}
+		}
+		if (count == 1)
+			return 0;
+	}
+	//return 0;
+}
+/******************************结束写代码******************************/
+
+
+int main() {
+	int res;
+
+
+	res = fun();
+	cout << res << endl;
+
+	return 0;
+
+}
+
+
+/*
+int string2int(string str)
+{
+	int e = 0;
+	string::iterator it = str.begin();
+	while (it != str.end())
+	{
+		if (*it >= '0' && *it <= '9')
+		{
+			e = 10 * e + (*it - '0');
+			++it;
+		}
+		else
+			return 0;
+	}
+	return e;
+}
+
+
+
+int main() {
+	int res;
+
+	string _str;
+	getline(cin, _str);
+
+	res = string2int(_str);
+	cout << res << endl;
+	system("pause");
+
+	return 0;
+
+}
+*/
+
+
+/*
+class Rectangle
+{
+public:
+
+	Rectangle(double l = 0, double w = 0) :_length(l), _width(w){}
+	void virtual print()
+	{
+		cout << "该矩形的面积为：" << _length * _width << endl;
+		cout << "该矩形的周长为：" << 2 * (_length + _width) << endl;
+	}
+private:
+	double _length;
+	double _width;
+};
+
+int main()
+{
+	Rectangle r1(6, 8);
+	Rectangle r2(11, 10);
+
+	r1.print();
+	r2.print();
+
+	return 0;
+}
+*/
+
+/*
+class Shape
+{
+public:
+	void virtual area() = 0;
+	void virtual volume() = 0;
+};
+
+class Globe : public Shape
+{
+public:
+
+	Globe(double r = 0):radius(r){}
+	void virtual volume()
+	{
+		cout << "球体体积为: "<< 3.14 * radius * radius * radius << endl;
+	}
+	void virtual area()
+	{
+		cout << "球体表面积为: " << 4 * 3.14 * radius * radius << endl;
+	}
+private:
+	double radius;
+};
+
+class Cube : public Shape
+{
+public:
+	Cube(double l = 0) :length(l){}
+	void virtual area()
+	{
+		cout << "正方体的表面积为: "<<6 * length * length << endl;
+	}
+	void virtual volume()
+	{
+		cout << "正方体为体积为: " << length * length * length << endl;
+	}
+private:
+	double length;
+};
+
+int main()
+{
+	Shape* sh;
+
+	Globe* r = new Globe(2.0); 
+	sh = r;
+	sh->area();
+	sh->volume();
+
+	Cube* c = new Cube(3.0);
+	sh = c;
+	sh->area();
+	sh->volume();
+
+	return 0;
+}
+*/
+
+/*
+int main()
+{
+	char arr[100000] = { 0 };
+	int x;
+	cin >> x;
+	int count = 0;
+	for (int i = 2017; i <= x; ++i)
+	{
+		sprintf(arr, "%d", i);
+		for (int j = 0; j < strlen(arr); ++j)
+		{
+			if (arr[j] == '2')
+			for (int a = j; a < strlen(arr); ++a)
+			if (arr[a] == '0')
+			for (int b = a; b < strlen(arr); ++b)
+			if (arr[b] == '1')
+			for (int c = b; c < strlen(arr); ++c)
+			if (arr[c] == '8')
+				count++;
+		}
+	}
+	cout << count << endl;
+	system("pause");
+	return 0;
+}
+*/
+/*
+class Solution {
+public:
+	int lengthOfLongestSubstring(string s)
+	{
+		if (s.size() == 0)
+		{
+			cout << 0 << endl;
+			return 0;
+		}
+		//char *p1 = &s[0];
+		//char *p2 = p1++;
+		string::iterator it1 = s.begin();
+		string::iterator it2 = s.begin() + 1;
+
+		int max_len = 1;
+		int index;
+		while (it2 != s.end())
+		{
+			index = 1;
+			for (string::iterator it = it1; it != it2; ++it)
+			{
+				if (*it == *it2)
+				{
+					max_len = max(max_len, index);
+					it1 = it++;
+					it = it2 - 1;
+					index = it2 - it1;
+				}
+				index++;
+			}
+			max_len = max(max_len, index);
+			++it2;
+		}
+		cout << max_len << endl;
+		return 0;
+	}
+};
+
+int main()
+{
+	Solution s;
+	string ss("abcdabc");
+	s.lengthOfLongestSubstring(ss);
+	system("pause");
+	return 0;
+}
+*/
 //------------------------------------------
 //class A
 //{
